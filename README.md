@@ -2,6 +2,11 @@
 
 记录小安酱分享的私房菜谱
 
+## 在线访问
+
+- 🚀 **Vercel（推荐，国内访问快）**: https://xiaoan-recipes.vercel.app/
+- 📄 **GitHub Pages**: https://hutongmishu.github.io/xiaoan-recipes/
+
 ## 功能特点
 
 - 📱 PWA 应用，可添加到手机主屏幕
