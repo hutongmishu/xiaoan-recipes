@@ -53,15 +53,18 @@ body {
   min-height: 100vh;
 }
 
-/* ===== 头部 - 柔和渐变 ===== */
+/* ===== 头部 - 厨娘图片铺满背景 ===== */
 .header {
-  background: linear-gradient(135deg, #f9d5c4 0%, #f4c2b0 50%, #e88c6a 100%);
+  position: relative;
   padding: 30px 20px 40px;
   text-align: center;
   color: #fff;
   border-radius: 0 0 30px 30px;
-  position: relative;
   overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-bg {
@@ -70,8 +73,22 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, #f9d5c4 0%, #f4c2b0 50%, #e88c6a 100%);
+  background-image: url('../images/chef2.png');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
   z-index: 0;
+}
+
+.header-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(232, 140, 106, 0.7) 0%, rgba(244, 165, 132, 0.6) 50%, rgba(249, 213, 196, 0.7) 100%);
+  z-index: 1;
 }
 
 .header::before {
@@ -81,29 +98,18 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
 
 .chef-avatar {
-  position: relative;
-  z-index: 2;
-  margin-bottom: 16px;
-}
-
-.chef-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid rgba(255,255,255,0.8);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  display: none;
 }
 
 .header-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .logo {
