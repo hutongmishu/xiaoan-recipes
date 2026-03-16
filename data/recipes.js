@@ -9,7 +9,7 @@ const recipes = [
     emoji: "🍜",
     tags: ["面食", "家常", "快手"],
     time: "30分钟",
-    difficulty: "简单",
+    difficulty: "中等",
     servings: "2-3人份",
     ingredients: {
       main: [
