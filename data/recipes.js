@@ -1,3 +1,5 @@
+// 小安做菜 - 菜谱数据
+
 const recipes = [
   {
     id: 1,
@@ -77,6 +79,10 @@ const recipes = [
 ];
 
 // 导出数据
+if (typeof window !== 'undefined') {
+  window.recipes = recipes;
+}
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { recipes };
 }
