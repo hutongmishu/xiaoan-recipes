@@ -1,17 +1,19 @@
-/* ===== 基础样式 ===== */
+/* ===== 日系温暖风格 - 小安做菜 ===== */
 :root {
-  --primary: #8B4513;
-  --primary-light: #A0522D;
-  --secondary: #D4A574;
-  --bg: #f5f0e8;
-  --card-bg: #fffef8;
-  --text: #333;
-  --text-light: #666;
-  --border: #e8d5c4;
-  --highlight: #ffeb3b;
-  --tip-bg: #fff3e0;
-  --tip-border: #ff9800;
-  --shadow: 0 4rpx 16rpx rgba(0,0,0,0.06);
+  --primary: #e88c6a;
+  --primary-light: #f4a584;
+  --secondary: #f8e4d9;
+  --bg: #fffaf7;
+  --card-bg: #ffffff;
+  --text: #5a4a42;
+  --text-light: #8b7b73;
+  --border: #f0e0d5;
+  --highlight: #ffe4d6;
+  --tip-bg: #fff5f0;
+  --tip-border: #e88c6a;
+  --accent: #ffb7a5;
+  --shadow: 0 4px 20px rgba(232, 140, 106, 0.08);
+  --shadow-hover: 0 8px 30px rgba(232, 140, 106, 0.15);
 }
 
 * {
@@ -27,7 +29,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans JP', sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -41,65 +43,88 @@ body {
   min-height: 100vh;
 }
 
-/* ===== 头部 ===== */
+/* ===== 头部 - 柔和渐变 ===== */
 .header {
-  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-  padding: 40px 20px;
+  background: linear-gradient(135deg, #f9d5c4 0%, #f4c2b0 50%, #e88c6a 100%);
+  padding: 50px 20px 40px;
   text-align: center;
   color: #fff;
+  border-radius: 0 0 30px 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .logo {
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 8px;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
 }
 
 .header .subtitle {
   font-size: 14px;
-  opacity: 0.9;
+  opacity: 0.95;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 /* ===== 搜索栏 ===== */
 .search-bar {
-  padding: 12px 16px;
-  background: var(--primary);
+  padding: 16px 20px;
+  background: transparent;
+  margin-top: -20px;
+  position: relative;
+  z-index: 10;
 }
 
 .search-input-wrap {
   display: flex;
   align-items: center;
-  background: rgba(255,255,255,0.15);
-  border-radius: 20px;
-  padding: 10px 16px;
+  background: #fff;
+  border-radius: 25px;
+  padding: 12px 20px;
+  box-shadow: var(--shadow);
+  border: 2px solid var(--secondary);
 }
 
 .search-icon {
   font-size: 16px;
-  margin-right: 8px;
-  opacity: 0.8;
+  margin-right: 10px;
+  opacity: 0.6;
 }
 
 .search-input {
   flex: 1;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--text);
   font-size: 15px;
   outline: none;
 }
 
 .search-input::placeholder {
-  color: rgba(255,255,255,0.6);
+  color: var(--text-light);
 }
 
 /* ===== 主内容 ===== */
 .main {
-  padding: 16px;
+  padding: 16px 20px;
 }
 
-/* ===== 菜谱卡片 ===== */
+/* ===== 菜谱卡片 - 柔和圆角 ===== */
 .recipe-list {
   display: flex;
   flex-direction: column;
@@ -108,13 +133,19 @@ body {
 
 .recipe-card {
   background: var(--card-bg);
-  border-radius: 16px;
+  border-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow);
   text-decoration: none;
   color: inherit;
   display: block;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+.recipe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
 }
 
 .recipe-card:active {
@@ -122,8 +153,8 @@ body {
 }
 
 .card-cover {
-  height: 160px;
-  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  height: 180px;
+  background: linear-gradient(135deg, #f9d5c4 0%, #f4c2b0 50%, #e88c6a 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,42 +162,44 @@ body {
 }
 
 .card-emoji {
-  font-size: 72px;
+  font-size: 80px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
 }
 
 .card-badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 16px;
+  right: 16px;
   background: rgba(255,255,255,0.95);
   color: var(--primary);
   font-size: 12px;
-  padding: 4px 12px;
-  border-radius: 12px;
+  padding: 6px 14px;
+  border-radius: 20px;
   font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .card-content {
-  padding: 16px;
+  padding: 20px;
 }
 
 .card-title {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   color: var(--text);
 }
 
 .card-subtitle {
   font-size: 14px;
   color: var(--text-light);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .card-meta {
   display: flex;
   gap: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .meta-item {
@@ -183,9 +216,10 @@ body {
 .tag {
   font-size: 12px;
   color: var(--primary);
-  background: rgba(139,69,19,0.08);
-  padding: 4px 10px;
-  border-radius: 6px;
+  background: var(--secondary);
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-weight: 500;
 }
 
 /* ===== 底部导航 ===== */
@@ -197,10 +231,11 @@ body {
   background: #fff;
   display: flex;
   justify-content: space-around;
-  padding: 8px 0;
-  padding-bottom: calc(8px + env(safe-area-inset-bottom));
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  padding: 10px 0;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  box-shadow: 0 -2px 20px rgba(0,0,0,0.05);
   z-index: 100;
+  border-radius: 20px 20px 0 0;
 }
 
 .tab-item {
@@ -208,8 +243,9 @@ body {
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: #999;
-  padding: 4px 20px;
+  color: #bbb;
+  padding: 6px 24px;
+  transition: all 0.2s;
 }
 
 .tab-item.active {
@@ -218,11 +254,12 @@ body {
 
 .tab-icon {
   font-size: 22px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .tab-text {
   font-size: 11px;
+  font-weight: 500;
 }
 
 /* ===== 弹窗 ===== */
@@ -236,11 +273,11 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   background: var(--card-bg);
-  border-radius: 16px;
-  width: 85%;
-  max-width: 340px;
+  border-radius: 24px;
+  width: 88%;
+  max-width: 360px;
   z-index: 200;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  box-shadow: 0 25px 80px rgba(0,0,0,0.15);
 }
 
 .modal.show, .overlay.show {
@@ -252,70 +289,79 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(90, 74, 66, 0.4);
   z-index: 150;
+  backdrop-filter: blur(4px);
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
+  padding: 20px 24px;
   border-bottom: 1px solid var(--border);
 }
 
 .modal-header h3 {
   font-size: 18px;
   color: var(--text);
+  font-weight: 600;
 }
 
 .modal-close {
   background: none;
   border: none;
   font-size: 20px;
-  color: #999;
+  color: #ccc;
   cursor: pointer;
   padding: 4px;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--text);
 }
 
 .modal-body {
-  padding: 20px;
+  padding: 24px;
 }
 
 .modal-body p {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   color: var(--text);
+  line-height: 1.7;
 }
 
 .modal-body ul {
   margin-left: 20px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .modal-body li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: var(--text-light);
 }
 
 .install-tip {
-  background: #e8f5e9;
-  border-left: 4px solid #4caf50;
-  padding: 12px 16px;
-  border-radius: 0 8px 8px 0;
-  margin-top: 16px;
+  background: var(--secondary);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 18px;
 }
 
 .install-tip p {
   margin: 0;
-  color: #2e7d32;
+  color: var(--primary);
   font-size: 14px;
+  font-weight: 500;
 }
 
 /* ===== 详情页 ===== */
 .back-bar {
-  background: var(--primary);
-  padding: 12px 16px;
-  padding-top: calc(12px + env(safe-area-inset-top));
+  background: linear-gradient(135deg, #f9d5c4 0%, #e88c6a 100%);
+  padding: 16px 20px;
+  padding-top: calc(16px + env(safe-area-inset-top));
+  border-radius: 0 0 24px 24px;
 }
 
 .back-btn {
@@ -325,23 +371,25 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  font-weight: 500;
 }
 
 .recipe-detail {
-  padding: 0 16px 100px;
+  padding: 0 20px 100px;
 }
 
 .detail-header {
   background: var(--card-bg);
   margin: 16px 0;
-  border-radius: 16px;
+  border-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .detail-cover {
-  height: 200px;
-  background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+  height: 220px;
+  background: linear-gradient(135deg, #f9d5c4 0%, #f4c2b0 50%, #e88c6a 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -349,16 +397,18 @@ body {
 
 .detail-emoji {
   font-size: 100px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
 }
 
 .detail-info {
-  padding: 20px;
+  padding: 24px;
 }
 
 .detail-title {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 6px;
+  color: var(--text);
 }
 
 .detail-subtitle {
@@ -370,10 +420,10 @@ body {
 .detail-stats {
   display: flex;
   justify-content: space-around;
-  padding: 16px 0;
+  padding: 18px 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .stat {
@@ -382,9 +432,10 @@ body {
 
 .stat-value {
   display: block;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   color: var(--primary);
+  margin-bottom: 4px;
 }
 
 .stat-label {
@@ -402,32 +453,34 @@ body {
 .section {
   background: var(--card-bg);
   margin: 16px 0;
-  padding: 20px;
-  border-radius: 16px;
+  padding: 24px;
+  border-radius: 24px;
   box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .section-title {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .section-title::before {
   content: '';
   width: 4px;
-  height: 22px;
-  background: var(--primary);
+  height: 24px;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
   border-radius: 2px;
 }
 
 .section-title h2 {
   font-size: 18px;
-  color: var(--primary);
+  color: var(--text);
+  font-weight: 600;
 }
 
-/* ===== 材料清单 ===== */
+/* ===== 材料清单 - 柔和卡片 ===== */
 .ingredient-group {
   margin-bottom: 20px;
 }
@@ -441,18 +494,23 @@ body {
   font-weight: 600;
   color: var(--primary);
   margin-bottom: 12px;
-  padding-left: 10px;
-  border-left: 3px solid var(--secondary);
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
 }
 
 .ingredient-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 14px;
-  background: #faf7f2;
-  border-radius: 10px;
-  margin-bottom: 8px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border-radius: 14px;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+}
+
+.ingredient-item:hover {
+  background: var(--secondary);
 }
 
 .ingredient-item:last-child {
@@ -462,6 +520,7 @@ body {
 .ingredient-name {
   font-size: 15px;
   color: var(--text);
+  font-weight: 500;
 }
 
 .ingredient-amount {
@@ -469,12 +528,13 @@ body {
   color: var(--text-light);
 }
 
-/* ===== 步骤 ===== */
+/* ===== 步骤 - 柔和风格 ===== */
 .step-card {
-  background: #faf7f2;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 12px;
+  background: var(--bg);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
 }
 
 .step-card:last-child {
@@ -484,34 +544,39 @@ body {
 .step-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 14px;
+  margin-bottom: 16px;
 }
 
 .step-num {
-  width: 32px;
-  height: 32px;
-  background: var(--primary);
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(232, 140, 106, 0.3);
 }
 
 .step-title {
   font-size: 17px;
   font-weight: 600;
-  color: var(--primary);
+  color: var(--text);
+}
+
+.step-body {
+  padding-left: 50px;
 }
 
 .step-item {
   display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 10px;
+  margin-bottom: 12px;
   font-size: 15px;
   line-height: 1.7;
 }
@@ -521,24 +586,30 @@ body {
 }
 
 .step-dot {
-  color: var(--secondary);
+  color: var(--accent);
   font-weight: bold;
+  font-size: 18px;
 }
 
 .step-tip {
-  margin-top: 12px;
+  margin-top: 14px;
   background: var(--tip-bg);
   border-left: 4px solid var(--tip-border);
-  padding: 12px 14px;
-  border-radius: 0 8px 8px 0;
+  padding: 14px 16px;
+  border-radius: 0 12px 12px 0;
   font-size: 14px;
-  color: #e65100;
+  color: var(--primary);
+  font-weight: 500;
 }
 
 /* ===== 小贴士 ===== */
+.tips-list {
+  margin-bottom: 16px;
+}
+
 .tip-item {
-  margin-bottom: 14px;
-  padding-bottom: 14px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -551,34 +622,41 @@ body {
 .tip-title {
   font-weight: 600;
   color: var(--text);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tip-title::before {
+  content: '✨';
 }
 
 .tip-content {
   color: var(--text-light);
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .key-points {
   background: var(--tip-bg);
-  border-left: 4px solid var(--tip-border);
-  padding: 14px 16px;
-  border-radius: 0 10px 10px 0;
+  border-radius: 16px;
+  padding: 18px 20px;
   font-size: 14px;
-  color: #e65100;
-  line-height: 1.7;
+  color: var(--primary);
+  line-height: 1.8;
+  font-weight: 500;
 }
 
 /* ===== 引用 ===== */
 .quote-section {
-  background: #f5f0e8;
+  background: linear-gradient(135deg, var(--secondary) 0%, #fff 100%);
   margin: 16px 0;
-  padding: 24px 20px;
-  border-radius: 16px;
+  padding: 30px 24px;
+  border-radius: 24px;
   text-align: center;
-  border-top: 2px dashed var(--secondary);
+  border: 1px solid var(--border);
 }
 
 .quote-text {
@@ -586,12 +664,13 @@ body {
   font-size: 17px;
   color: var(--primary);
   font-style: italic;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-weight: 500;
 }
 
 .quote-author {
   font-size: 14px;
-  color: #a08060;
+  color: var(--text-light);
 }
 
 /* ===== 底部操作栏 ===== */
@@ -601,31 +680,40 @@ body {
   left: 0;
   right: 0;
   background: #fff;
-  padding: 12px 16px;
-  padding-bottom: calc(12px + env(safe-area-inset-bottom));
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+  padding: 14px 20px;
+  padding-bottom: calc(14px + env(safe-area-inset-bottom));
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
   display: flex;
   gap: 12px;
   z-index: 50;
+  border-radius: 24px 24px 0 0;
 }
 
 .action-btn {
   flex: 1;
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   color: #fff;
   border: none;
-  padding: 14px 0;
-  border-radius: 10px;
+  padding: 16px 0;
+  border-radius: 16px;
   font-size: 16px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(232, 140, 106, 0.3);
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 140, 106, 0.4);
 }
 
 .action-btn:active {
-  opacity: 0.9;
+  transform: scale(0.98);
 }
 
 /* ===== 跟做模式 ===== */
@@ -653,17 +741,19 @@ body {
 }
 
 .cooking-header {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   color: #fff;
-  padding: 16px 20px;
-  padding-top: calc(16px + env(safe-area-inset-top));
+  padding: 20px 24px;
+  padding-top: calc(20px + env(safe-area-inset-top));
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 0 0 24px 24px;
 }
 
 .cooking-progress {
   font-size: 15px;
+  font-weight: 500;
 }
 
 .cooking-close {
@@ -678,78 +768,88 @@ body {
 .cooking-step {
   flex: 1;
   overflow-y: auto;
-  padding: 20px;
+  padding: 24px;
 }
 
 .cooking-step-content {
   background: var(--card-bg);
-  border-radius: 16px;
-  padding: 24px;
+  border-radius: 24px;
+  padding: 28px;
   box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .cooking-step-title {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
 .cooking-step-number {
-  width: 48px;
-  height: 48px;
-  background: var(--primary);
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(232, 140, 106, 0.3);
 }
 
 .cooking-step-name {
   font-size: 22px;
   font-weight: 600;
-  color: var(--primary);
+  color: var(--text);
 }
 
 .cooking-items {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .cooking-item {
   display: flex;
-  gap: 10px;
-  margin-bottom: 12px;
+  gap: 12px;
+  margin-bottom: 14px;
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .cooking-nav {
   background: #fff;
-  padding: 16px 20px;
-  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  padding: 18px 24px;
+  padding-bottom: calc(18px + env(safe-area-inset-bottom));
   display: flex;
-  gap: 12px;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  gap: 14px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+  border-radius: 24px 24px 0 0;
 }
 
 .nav-btn {
   flex: 1;
-  background: #f0f0f0;
+  background: var(--bg);
   color: var(--text);
   border: none;
-  padding: 14px 0;
-  border-radius: 10px;
+  padding: 16px 0;
+  border-radius: 16px;
   font-size: 16px;
   cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover {
+  background: var(--secondary);
 }
 
 .nav-btn.primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   color: #fff;
+  box-shadow: 0 4px 16px rgba(232, 140, 106, 0.3);
 }
 
 .nav-btn:disabled {
@@ -760,23 +860,27 @@ body {
 /* ===== 高亮文本 ===== */
 .highlight {
   background: var(--highlight);
-  padding: 2px 6px;
-  border-radius: 4px;
+  padding: 2px 8px;
+  border-radius: 6px;
   font-weight: 500;
+  color: var(--primary);
 }
 
 /* ===== 比例盒 ===== */
 .ratio-box {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   color: #fff;
-  padding: 14px 16px;
-  border-radius: 10px;
+  padding: 18px 20px;
+  border-radius: 16px;
   text-align: center;
-  margin: 12px 0;
+  margin: 14px 0;
+  box-shadow: 0 4px 16px rgba(232, 140, 106, 0.25);
 }
 
 .ratio-box strong {
   font-size: 16px;
+  display: block;
+  margin-bottom: 6px;
 }
 
 .ratio-box small {
@@ -787,15 +891,46 @@ body {
 /* ===== 空状态 ===== */
 .empty-state {
   text-align: center;
-  padding: 60px 20px;
+  padding: 70px 20px;
   color: var(--text-light);
 }
 
 .empty-state .emoji {
-  font-size: 64px;
-  margin-bottom: 16px;
+  font-size: 72px;
+  margin-bottom: 20px;
+  opacity: 0.8;
 }
 
 .empty-state p {
   font-size: 15px;
+}
+
+/* ===== 更新提示条 ===== */
+.update-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%);
+  color: white;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  font-size: 15px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  font-weight: 500;
+}
+
+.update-bar button {
+  background: white;
+  color: #4caf50;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
