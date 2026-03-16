@@ -5,7 +5,7 @@ const recipes = [
     id: 1,
     title: "小安酱改良版炸酱面",
     subtitle: "甜口酱香 · 肉丁焦香 · 家庭制作",
-    author: "安卉",
+    author: "小安酱",
     emoji: "🍜",
     tags: ["面食", "家常", "快手"],
     time: "30分钟",
