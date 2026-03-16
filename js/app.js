@@ -105,7 +105,61 @@ class App {
   }
 }
 
+// 检测 Service Worker 更新
+function checkForUpdates() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.addEventListener('message', event => {
+      if (event.data && event.data.type === 'UPDATE_AVAILABLE') {
+        showUpdateNotification();
+      }
+    });
+  }
+}
+
+// 显示更新提示
+function showUpdateNotification() {
+  // 创建更新提示条
+  const updateBar = document.createElement('div');
+  updateBar.className = 'update-bar';
+  updateBar.innerHTML = `
+    <span>🎉 有新版本可用</span>
+    <button onclick="location.reload()">立即刷新</button>
+  `;
+  
+  // 添加样式
+  updateBar.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #4caf50;
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    font-size: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  `;
+  
+  updateBar.querySelector('button').style.cssText = `
+    background: white;
+    color: #4caf50;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+  `;
+  
+  document.body.appendChild(updateBar);
+  document.body.style.paddingTop = '48px';
+}
+
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
   new App();
+  checkForUpdates();
 });

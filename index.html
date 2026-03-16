@@ -84,10 +84,23 @@
   <script src="data/recipes.js"></script>
   <script src="js/app.js"></script>
   <script>
-    // 注册 Service Worker
+    // 注册 Service Worker 并检查更新
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('js/sw.js')
-        .then(reg => console.log('SW registered'))
+        .then(reg => {
+          console.log('SW registered');
+          // 定期检查更新
+          setInterval(() => {
+            reg.update();
+          }, 60000); // 每分钟检查一次
+          
+          // 页面可见时检查更新
+          document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+              reg.update();
+            }
+          });
+        })
         .catch(err => console.log('SW registration failed'));
     }
   </script>
