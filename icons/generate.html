@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Icons</title>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    sizes.forEach(size => {
+      canvas.width = size;
+      canvas.height = size;
+
+      // 背景
+      const gradient = ctx.createLinearGradient(0, 0, size, size);
+      gradient.addColorStop(0, '#8B4513');
+      gradient.addColorStop(1, '#A0522D');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, size, size);
+
+      // 圆角
+      ctx.globalCompositeOperation = 'destination-in';
+      ctx.beginPath();
+      ctx.roundRect(0, 0, size, size, size * 0.2);
+      ctx.fill();
+      ctx.globalCompositeOperation = 'source-over';
+
+      // 重新填充背景（因为圆角会切掉）
+      ctx.fillStyle = gradient;
+      ctx.fill();
+
+      // 画图标
+      ctx.font = `${size * 0.5}px Arial`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('🍳', size / 2, size / 2 + size * 0.05);
+
+      // 保存
+      const link = document.createElement('a');
+      link.download = `icon-${size}x${size}.png`;
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+
+    console.log('Icons generated!');
+  </script>
+</body>
+</html>

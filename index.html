@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#8B4513">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="小安做菜">
+  <title>小安做菜</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+</head>
+<body>
+  <div class="app">
+    <!-- 头部 -->
+    <header class="header">
+      <div class="header-content">
+        <h1 class="logo">🍳 小安做菜</h1>
+        <p class="subtitle">记录安卉分享的私房菜谱</p>
+      </div>
+    </header>
+
+    <!-- 搜索栏 -->
+    <div class="search-bar">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          class="search-input" 
+          id="searchInput"
+          placeholder="搜索菜谱..."
+          autocomplete="off"
+        >
+      </div>
+    </div>
+
+    <!-- 主内容 -->
+    <main class="main">
+      <div class="recipe-list" id="recipeList">
+        <!-- 菜谱卡片将由 JS 生成 -->
+      </div>
+    </main>
+
+    <!-- 底部导航 -->
+    <nav class="tab-bar">
+      <a href="index.html" class="tab-item active">
+        <span class="tab-icon">📖</span>
+        <span class="tab-text">菜谱</span>
+      </a>
+      <a href="#" class="tab-item" id="aboutTab">
+        <span class="tab-icon">💡</span>
+        <span class="tab-text">关于</span>
+      </a>
+    </nav>
+
+    <!-- 关于弹窗 -->
+    <div class="modal" id="aboutModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>关于小安做菜</h3>
+          <button class="modal-close" id="closeModal">✕</button>
+        </div>
+        <div class="modal-body">
+          <p>这是一个记录私房菜谱的 PWA 应用。</p>
+          <p>你可以：</p>
+          <ul>
+            <li>将本页面添加到手机主屏幕</li>
+            <li>离线查看菜谱</li>
+            <li>使用跟做模式一步步烹饪</li>
+          </ul>
+          <div class="install-tip" id="installTip">
+            <p>💡 点击浏览器菜单 → "添加到主屏幕"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 遮罩 -->
+    <div class="overlay" id="overlay"></div>
+  </div>
+
+  <script src="data/recipes.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // 注册 Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('js/sw.js')
+        .then(reg => console.log('SW registered'))
+        .catch(err => console.log('SW registration failed'));
+    }
+  </script>
+</body>
+</html>

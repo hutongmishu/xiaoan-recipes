@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#8B4513">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>菜谱详情 - 小安做菜</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+</head>
+<body>
+  <div class="app">
+    <!-- 返回按钮 -->
+    <div class="back-bar">
+      <a href="index.html" class="back-btn">← 返回</a>
+    </div>
+
+    <!-- 菜谱内容 -->
+    <main class="recipe-detail" id="recipeDetail">
+      <!-- 内容由 JS 生成 -->
+    </main>
+
+    <!-- 底部操作栏 -->
+    <div class="detail-actions">
+      <button class="action-btn" id="cookModeBtn">
+        <span>👨‍🍳 开始跟做</span>
+      </button>
+    </div>
+
+    <!-- 跟做模式 -->
+    <div class="cooking-modal" id="cookingModal">
+      <div class="cooking-content">
+        <div class="cooking-header">
+          <span class="cooking-progress" id="cookingProgress">步骤 1/3</span>
+          <button class="cooking-close" id="closeCooking">✕</button>
+        </div>
+        
+        <div class="cooking-step" id="cookingStep">
+          <!-- 步骤内容由 JS 生成 -->
+        </div>
+        
+        <div class="cooking-nav">
+          <button class="nav-btn" id="prevStep">上一步</button>
+          <button class="nav-btn primary" id="nextStep">下一步</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="data/recipes.js"></script>
+  <script src="js/recipe.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('js/sw.js');
+    }
+  </script>
+</body>
+</html>
