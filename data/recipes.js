@@ -3,7 +3,7 @@
 const recipes = [
   {
     id: 1,
-    title: "马奶奶改良版炸酱面",
+    title: "小安酱改良版炸酱面",
     subtitle: "甜口酱香 · 肉丁焦香 · 家庭制作",
     author: "安卉",
     emoji: "🍜",
