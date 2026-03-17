@@ -4,7 +4,6 @@
 
 ## 在线访问
 
-- 🚀 **Vercel（推荐，国内访问快）**: https://xiaoan-recipes.vercel.app/
 - 📄 **GitHub Pages**: https://hutongmishu.github.io/xiaoan-recipes/
 
 ## 功能特点
